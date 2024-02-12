@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 1",
+	"properties": {
+		"content": {
+			"query": "SELECT\n*\nFROM \nOPENROWSET (\n    BULK 'https://synapsedocsdp500.dfs.core.windows.net/synapsecontainer/Data/employee.csv',\n    FORMAT = 'csv',\n    HEADER_ROW = TRUE,\n    PARSER_VERSION = '2.0'\n) AS [result]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
