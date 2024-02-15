@@ -1,0 +1,17 @@
+{
+	"name": "openjson_payments",
+	"properties": {
+		"content": {
+			"query": "SELECT \npayment_type, payment_type_desc\nFROM\n    OPENROWSET(\n        BULK 'https://synapsedocsdp500.dfs.core.windows.net/nyctaxi/raw/payment_type.json',\n        FORMAT = 'CSV',\n        FIELDQUOTE = '0x0b',\n        FIELDTERMINATOR ='0x0b',\n        ROWTERMINATOR = '0x0a'\n       \n    )\n    WITH (\n        jsonContent varchar(MAX)\n    ) AS [Payment_type]\n    cross APPLY openjson(jsonContent)\n    WITH( payment_type SMALLINT, payment_type_desc varchar(50)\n\n    );",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "nyc_taxi_discovery",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
