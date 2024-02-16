@@ -1,0 +1,20 @@
+{
+	"name": "explore_trip_data_green_csv",
+	"properties": {
+		"folder": {
+			"name": "NYC Taxi/Discovery"
+		},
+		"content": {
+			"query": "-- This is auto-generated code\n\n\n--create EXTERNAL data SOURCE nyc_taxi_data_raw\n --   with \n --  (\n  --      LOCATION ='https://synapsedocsdp500.dfs.core.windows.net/nyctaxi/raw/'\n  -- )\n\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'trip_data_green_csv/**',\n        DATA_source = 'nyc_taxi_data_raw',\n        FORMAT = 'CSV',\n        HEADER_ROW= TRUE,\n        PARSER_VERSION = '2.0'\n    ) AS [result]\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "nyc_taxi_discovery",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
