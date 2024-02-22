@@ -1,6 +1,9 @@
 {
 	"name": "CREATE EXTERNAL DATA SOURCE",
 	"properties": {
+		"folder": {
+			"name": "LDW"
+		},
 		"content": {
 			"query": "\n--IF NOT EXISTS (SELECT * FROM sys.external_data_sources WHERE name = 'nyctaxi_synapsedocsdp500_dfs_core_windows_net') \n\tCREATE EXTERNAL DATA SOURCE [nyctaxi_src] \n\tWITH (\n\t\tLOCATION = 'https://synapsedocsdp500.dfs.core.windows.net/nyctaxi'\n\t);",
 			"metadata": {
