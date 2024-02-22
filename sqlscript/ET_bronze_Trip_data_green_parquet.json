@@ -1,0 +1,20 @@
+{
+	"name": "ET_bronze_Trip_data_green_parquet",
+	"properties": {
+		"folder": {
+			"name": "LDW"
+		},
+		"content": {
+			"query": "CREATE EXTERNAL TABLE bronze.Trip_data_green_parquet (\n\t[VendorID] int,\n\t[lpep_pickup_datetime] datetime2(7),\n\t[lpep_dropoff_datetime] datetime2(7),\n\t[store_and_fwd_flag] nvarchar(4000),\n\t[RatecodeID] int,\n\t[PULocationID] int,\n\t[DOLocationID] int,\n\t[passenger_count] int,\n\t[trip_distance] float,\n\t[fare_amount] float,\n\t[extra] float,\n\t[mta_tax] float,\n\t[tip_amount] float,\n\t[tolls_amount] float,\n\t[ehail_fee] int,\n\t[improvement_surcharge] float,\n\t[total_amount] float,\n\t[payment_type] int,\n\t[trip_type] int,\n\t[congestion_surcharge] float\n\t)\n\tWITH (\n\tLOCATION = 'raw/trip_data_green_parquet/**',\n\tDATA_SOURCE = [nyctaxi_src],\n\tFILE_FORMAT = [parquet_File_Format]\n\t)\nGO\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "NYC_TAXI_LDW",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
