@@ -1,0 +1,17 @@
+{
+	"name": "create LDW",
+	"properties": {
+		"content": {
+			"query": "--CreATE DATABASE NYC_TAXI_LDW\nUSE NYC_TAXI_LDW\nGO\nCREATE SCHEMA bronze\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "NYC_TAXI_LDW",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
