@@ -1,6 +1,9 @@
 {
 	"name": "CREATE EXTERNAL FILE FORMAT",
 	"properties": {
+		"folder": {
+			"name": "LDW"
+		},
 		"content": {
 			"query": "--IF NOT EXISTS (SELECT * FROM sys.external_file_formats WHERE name = 'SynapseDelimitedTextFormat') \n\t\n    use NYC_TAXI_LDW\n    go\n    CREATE EXTERNAL FILE FORMAT [CSV_File_Format] \n\tWITH ( FORMAT_TYPE = DELIMITEDTEXT ,\n\t       FORMAT_OPTIONS (\n\n\t\t\t FIELD_TERMINATOR = ',',\n             STRING_DELIMITER='\"',\n             FIRST_ROW = 2,\n             ENCODING = 'UTF8',\n             PARSER_VERSION='2.0',\n\t\t\t USE_TYPE_DEFAULT = FALSE)\n            );\nGO\n\n",
 			"metadata": {
