@@ -1,0 +1,17 @@
+{
+	"name": "CREATE EXTERNAL TABLE",
+	"properties": {
+		"content": {
+			"query": "CREATE EXTERNAL TABLE bronze.Taxi_Zone (\n\tLocationID SMALLINT , \n     Borough VARCHAR(250) ,\n     Zone VARCHAR(250) ,\n    service_zone VARCHAR(200) \n\t)\n\tWITH (\n\tLOCATION = 'raw/taxi_zone.csv',\n\tDATA_SOURCE = [nyctaxi_src] ,\n\tFILE_FORMAT = [CSV_File_Format] \n\t)\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "NYC_TAXI_LDW",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
