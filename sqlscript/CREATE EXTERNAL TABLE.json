@@ -5,7 +5,7 @@
 			"name": "LDW"
 		},
 		"content": {
-			"query": "CREATE EXTERNAL TABLE bronze.Taxi_Zone (\n\tLocationID SMALLINT , \n     Borough VARCHAR(250) ,\n     Zone VARCHAR(250) ,\n    service_zone VARCHAR(200) \n\t)\n\tWITH (\n\tLOCATION = 'raw/taxi_zone.csv',\n\tDATA_SOURCE = [nyctaxi_src] ,\n\tFILE_FORMAT = [CSV_File_Format] \n\t)\nGO",
+			"query": "--drop EXTERNAL TABLE bronze.Taxi_Zone \nCREATE EXTERNAL TABLE bronze.Taxi_Zone (\n\tLocationID SMALLINT , \n     Borough VARCHAR(250) ,\n     Zone VARCHAR(250) ,\n    service_zone VARCHAR(200) \n\t)\n\tWITH (\n\tLOCATION = 'raw/taxi_zone.csv',\n\tDATA_SOURCE = [nyctaxi_src] ,\n\tFILE_FORMAT = [CSV_File_Format_PV1],\n    Reject_Value =10,\n   Rejected_Row_location='rejections/taxi_zone'\n    \n\t)\nGO",
 			"metadata": {
 				"language": "sql"
 			},
