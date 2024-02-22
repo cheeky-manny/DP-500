@@ -2,7 +2,7 @@
 	"name": "create LDW",
 	"properties": {
 		"content": {
-			"query": "--CreATE DATABASE NYC_TAXI_LDW\nUSE NYC_TAXI_LDW\nGO\nCREATE SCHEMA bronze\n",
+			"query": "--CreATE DATABASE NYC_TAXI_LDW\nUSE NYC_TAXI_LDW\nGO\nCREATE SCHEMA bronze\nGO\nCREATE SCHEMA Silver\nGO\nCREATE SCHEMA Gold\ngo\n--alter DATABASE NYC_TAXI_LDW collate latin1_General_100_BIN2_UTF8\n--go\n\n-------check all database connection and kill all database connection \n/**SELECT\n    c.session_id, c.net_transport, c.encrypt_option,\n    s.status,\n    c.auth_scheme, s.host_name, s.program_name,\n    s.client_interface_name, s.login_name, s.nt_domain,\n    s.nt_user_name, s.original_login_name, c.connect_time,\n    s.login_time\nFROM sys.dm_exec_connections AS c\nJOIN sys.dm_exec_sessions AS s\n    ON c.session_id = s.session_id\n--WHERE c.session_id = @@SPID;\n--WHERE status = 'sleeping'\nORDER BY c.connect_time ASC\n\nDECLARE @kill varchar(8000) = '';\n\nSELECT @kill = @kill + 'KILL ' + CONVERT(varchar(5), c.session_id) + ';'\n\nFROM sys.dm_exec_connections AS c\nJOIN sys.dm_exec_sessions AS s\n    ON c.session_id = s.session_id\nWHERE c.session_id <> @@SPID\n--WHERE status = 'sleeping'\nORDER BY c.connect_time ASC\n\nEXEC(@kill)\n***/\n\n",
 			"metadata": {
 				"language": "sql"
 			},
